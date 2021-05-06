@@ -1,17 +1,19 @@
-# calacrate_flick2_app
+# フリック電卓アプリ　
 
-A new Flutter project.
+<img src = "https://user-images.githubusercontent.com/67954894/117250179-d0abd800-ae7d-11eb-9ce5-11d1aee1e53a.png" width = 40%>
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+機能の説明(使用した技術)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# flick_calculator
+・フリック機能
+上： 掛け算　×
+下： 割り算　÷
+右： 足し算　+
+左： 引き算　−
+
+・削除機能
+一つ前の文字を削除
+
+・履歴を残す
