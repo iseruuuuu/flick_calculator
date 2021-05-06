@@ -12,15 +12,10 @@ void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  //runApp(CalcApp());
-  //runApp(SwipeApp());
-  //runApp(Swipeable());
-  //runApp(SwipeGesture());
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  //const CalcApp({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,7 +25,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-  class CalcApp extends StatefulWidget {
+class CalcApp extends StatefulWidget {
   @override
   CalcAppState createState() => CalcAppState();
 }
@@ -94,56 +89,28 @@ class CalcAppState extends State<CalcApp> {
     });
   }
 
-  void tap(String text) {
-    print(text);
-    //TODO 動画再生したい。
-  }
-
-  void dialog () {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('サンプルダイアログ'),
-          content: Text(''),
-          actions: <Widget>[
-            FlatButton(
-              child: Text("CANCEL"),
-              onPressed: () => Navigator.pop(context),
-            ),
-            FlatButton(
-              child: Text("OK"),
-              onPressed: () => Navigator.pop(context),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   void evaluate(String text) {
-
     if (_expression.length == 0) {
 
     }else{
-    Parser p = Parser();
-    Expression exp = p.parse(_expression);
-    ContextModel cm = ContextModel();
-    setState(() {
-      _history12 = _history11;
-      _history11 = _history10;
-      _history10 = _history9;
-      _history9 = _history8;
-      _history8 = _history7;
-      _history7 = _history6;
-      _history6 = _history5;
-      _history5 = _history4;
-      _history4 = _history3;
-      _history3 = _history2;
-      _history2 = _history;
-      _history = _expression;
-      _expression = exp.evaluate(EvaluationType.REAL, cm).toString();
-    });
+      Parser p = Parser();
+      Expression exp = p.parse(_expression);
+      ContextModel cm = ContextModel();
+      setState(() {
+        _history12 = _history11;
+        _history11 = _history10;
+        _history10 = _history9;
+        _history9 = _history8;
+        _history8 = _history7;
+        _history7 = _history6;
+        _history6 = _history5;
+        _history5 = _history4;
+        _history4 = _history3;
+        _history3 = _history2;
+        _history2 = _history;
+        _history = _expression;
+        _expression = exp.evaluate(EvaluationType.REAL, cm).toString();
+      });
     }
   }
 
@@ -160,205 +127,199 @@ class CalcAppState extends State<CalcApp> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                 new Container(
-                    height: deviceHeight * 0.22,
-                  //  height: 140,
-                   // height: size.width,
-                   // decoration: BoxDecoration(
-                     // border: Border.all(color: Colors.white),
-                     // borderRadius: BorderRadius.circular(10),
-                    //),
-                    child: SingleChildScrollView(
-                      reverse: true,
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history12,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    color: Colors.white,
-                                  ),
+                new Container(
+                  height: deviceHeight * 0.22,
+                  child: SingleChildScrollView(
+                    reverse: true,
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history12,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history11,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    color: Colors.white,
-                                  ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history11,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history10,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    color: Colors.white,
-                                  ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history10,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history9,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    color: Colors.white,
-                                  ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history9,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history8,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    color: Colors.white,
-                                  ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history8,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history7,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    color: Colors.white,
-                                  ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history7,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history6,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    color: Colors.white,
-                                  ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history6,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history5,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    color: Colors.white,
-                                  ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history5,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history4,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    color: Colors.white,
-                                  ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history4,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history3,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    //color: Color(0xFF545F61),
-                                    color: Colors.white,
-                                  ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history3,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  //color: Color(0xFF545F61),
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history2,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    //color: Color(0xFF545F61),
-                                    color: Colors.white,
-                                  ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history2,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  //color: Color(0xFF545F61),
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                          Container(
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 12),
-                              child: Text(
-                                _history,
-                                style: GoogleFonts.rubik(
-                                  textStyle: TextStyle(
-                                    fontSize: fontSize,
-                                    //color: Color(0xFF545F61),
-                                    color: Colors.white,
-                                  ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              _history,
+                              style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                  fontSize: fontSize,
+                                  //color: Color(0xFF545F61),
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
                           ),
-                        ],
-                      ),
+                          alignment: Alignment(1.0, 1.0),
+                        ),
+                      ],
                     ),
                   ),
+                ),
 
 
 
@@ -489,15 +450,6 @@ class CalcAppState extends State<CalcApp> {
                       textColor: 0xFFFFFFFF,
                       callback: numClick,
                     ),
-                    /*
-                    CalcButton(
-                      text: '-',
-                      fillColor: 0xFFFFFFFF,
-                      textColor: 0xFF65BDAC,
-                      textSize: 38,
-                      callback: numClick,
-                    ),
-                     */
                   ],
                 ),
                 Row(
@@ -524,15 +476,6 @@ class CalcAppState extends State<CalcApp> {
                       textColor: 0xFFFFFFFF,
                       callback: numClick,
                     ),
-                    /*
-                    CalcButton(
-                      text: '+',
-                      fillColor: 0xFFFFFFFF,
-                      textColor: 0xFF65BDAC,
-                      textSize: 30,
-                      callback: numClick,
-                    ),
-                     */
                   ],
                 ),
                 Row(
@@ -559,14 +502,6 @@ class CalcAppState extends State<CalcApp> {
                       textColor: 0xFFFFFFFF,
                       callback: evaluate,
                     ),
-                    /*
-                    CalcButton(
-                      text: '=',
-                      fillColor: 0xFFFFFFFF,
-                      textColor: 0xFF65BDAC,
-                      callback: evaluate,
-                    ),
-                     */
                   ],
                 )
               ],
