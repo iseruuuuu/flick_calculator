@@ -20,13 +20,15 @@ class CalcButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(6),
+      margin: EdgeInsets.only(top: 2,bottom: 2,right: 0,left: 0),
       child: SizedBox(
-        width: 75,
-        height: 75,
+        width: 73,
+        height: 73,
+        //width: 65,
+        //height: 65,
         child: FlatButton(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius .circular(40),
           ),
           onPressed: () {
             callback(text);
@@ -45,5 +47,53 @@ class CalcButton extends StatelessWidget {
       ),
     );
   }
+}
 
+
+class CalcButton1 extends StatelessWidget {
+  final String text;
+  final int fillColor;
+  final int textColor;
+  final double textSize;
+  final Function callback;
+
+  const CalcButton1({
+    Key key,
+    this.text,
+    this.fillColor,
+    this.textColor = 0xFFFFFFFF,
+    this.textSize = 28,
+    this.callback,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 1,bottom: 1,right: 0,left: 0),
+      child: SizedBox(
+        width: 73,
+        height: 73,
+        //width: 65,
+        //height: 65,
+        child: FlatButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius .circular(40),
+          ),
+          onPressed: () {
+            callback();
+          },
+          child: Text(
+            text,
+            style: GoogleFonts.rubik(
+              textStyle: TextStyle(
+                fontSize: textSize,
+              ),
+            ),
+          ),
+          color: fillColor != null ? Color(fillColor) : null,
+          textColor: Color(textColor),
+        ),
+      ),
+    );
+  }
 }

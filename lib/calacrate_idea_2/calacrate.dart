@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:calacrate_flick2_app/calacrate_idea_2/CalacButton3.2.dart';
-import 'package:calacrate_flick2_app/calacrate_idea_2/calacrate.dart';
 import 'package:calacrate_flick2_app/example/swipe_gesture_recognizer.dart';
 import 'package:calacrate_flick2_app/explain_page.dart';
 import 'package:flutter/services.dart';
@@ -9,37 +8,32 @@ import 'package:math_expressions/math_expressions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:swipe_gesture_recognizer/swipe_gesture_recognizer.dart';
-import './widgets/CalcButton.dart';
-import 'calacrate_idea_1/calacrator.dart';
-import 'mainnnnn.dart';
+
+import '../main.dart';
+import 'CalacButton3.1.dart';
+import 'CalacButton3.3.dart';
+import 'CalacButton3.dart';
+import 'explain_page2.dart';
 
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  //向き指定
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
-  runApp(MyApp7());
 
-}
 
-class MyApp extends StatelessWidget {
+class MyApp3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CalcApp(),
+      home: CalcApp3(),
     );
   }
 }
 
-class CalcApp extends StatefulWidget {
+class CalcApp3 extends StatefulWidget {
   @override
   CalcAppState createState() => CalcAppState();
 }
 
-class CalcAppState extends State<CalcApp> {
+class CalcAppState extends State<CalcApp3> {
 
   String _history = '';
   String _history2 = '';
@@ -135,14 +129,12 @@ class CalcAppState extends State<CalcApp> {
       });
     }
   }
-
   void listClick(String text) {
     isnumber = false;
     setState(() {
       _expression += text;
     });
   }
-
   void delete () {
     setState(() {
       if (_expression.length == 0) {
@@ -155,8 +147,6 @@ class CalcAppState extends State<CalcApp> {
       }
     });
   }
-
-
   void allClear(String text) {
     setState(() {
       _history = '';
@@ -234,13 +224,11 @@ class CalcAppState extends State<CalcApp> {
       _expression = '';
     });
   }
-
   void clear(String text) {
     setState(() {
       _expression = '';
     });
   }
-
   void evaluate(String text) {
     if (_expression.length == 0) {
 
@@ -316,6 +304,7 @@ class CalcAppState extends State<CalcApp> {
         _calcs4 = _calcs3;
         _calcs3 = _calcs2;
         _calcs2 = _expression;
+
         _calc = exp.evaluate(EvaluationType.REAL, cm).toString();
         if (_expression + ".0" == _calc || _expression == _calc) {
           _history = _calc;
@@ -327,11 +316,22 @@ class CalcAppState extends State<CalcApp> {
       });
     }
   }
-
   void longTap(String text) {
     //TODO 累乗計算をする？？
     pow(3, 2); // 3の2乗
 
+  }
+  void blank(String text){}
+
+
+
+  int find(var value) {
+    var fact = 1;
+    for(var i = 2;i<=value;i++)
+    {
+      fact *=i;
+    }
+    return fact;
   }
 
 
@@ -352,26 +352,37 @@ class CalcAppState extends State<CalcApp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 100),
-                    child: Center(
-                      child: Container(
-                        height: deviceHeight * 0.074,
+                  Column(
+                    children: [
+                      Center(
                         child: IconButton(
                           onPressed: () {
                             Navigator.push(
                               context, MaterialPageRoute(
-                                builder: (context) => ExplainPage()),
+                                builder: (context) => ExplainPage2()),
                             );
                           },
                           icon: Icon(Icons.menu, color: Colors.white,),
                         ),
                       ),
-                    ),
+                      SizedBox(height: 20,),
+                      Center(
+                        child: Container(
+                          height: deviceHeight * 0.034,
+                          child: IconButton(
+                            onPressed: () {
+                            Navigator.pop(context);
+                            },
+                            icon: Icon(Icons.calculate, color: Colors.white,),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 60,),
+                    ],
                   ),
 
                   new Container(
-                    height: deviceHeight * 0.2,
+                    height: deviceHeight * 0.4,
                     width: deviceWidth * 0.8,
                     child: SingleChildScrollView(
                       reverse: true,
@@ -399,7 +410,7 @@ class CalcAppState extends State<CalcApp> {
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
                           Divider(color: Colors.white, height: 20),
                           Container(
@@ -424,7 +435,7 @@ class CalcAppState extends State<CalcApp> {
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
                           Divider(color: Colors.white, height: 20),
                           Container(
@@ -449,7 +460,7 @@ class CalcAppState extends State<CalcApp> {
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
                           Divider(color: Colors.white, height: 20),
                           Container(
@@ -474,7 +485,7 @@ class CalcAppState extends State<CalcApp> {
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
                           Divider(color: Colors.white, height: 20),
                           Container(
@@ -499,7 +510,7 @@ class CalcAppState extends State<CalcApp> {
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
                           Divider(color: Colors.white, height: 20),
                           Container(
@@ -524,7 +535,7 @@ class CalcAppState extends State<CalcApp> {
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
                           Divider(color: Colors.white, height: 20),
                           Container(
@@ -549,7 +560,7 @@ class CalcAppState extends State<CalcApp> {
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
                           Divider(color: Colors.white, height: 20),
                           Container(
@@ -574,7 +585,7 @@ class CalcAppState extends State<CalcApp> {
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
                           Divider(color: Colors.white, height: 20),
                           Container(
@@ -599,7 +610,7 @@ class CalcAppState extends State<CalcApp> {
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
                           Divider(color: Colors.white, height: 20),
                           Container(
@@ -625,9 +636,8 @@ class CalcAppState extends State<CalcApp> {
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
-
                           Divider(color: Colors.white, height: 20),
                           Container(
                             child: Padding(
@@ -652,9 +662,8 @@ class CalcAppState extends State<CalcApp> {
 
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
-
                           Divider(color: Colors.white, height: 20),
                           Container(
                             child: Padding(
@@ -678,7 +687,7 @@ class CalcAppState extends State<CalcApp> {
                                 ),
                               ),
                             ),
-                            alignment: Alignment(1.0, 1.0),
+                            alignment: Alignment(-1, 1.0),
                           ),
                         ],
                       ),
@@ -710,328 +719,440 @@ class CalcAppState extends State<CalcApp> {
                 ),
                 alignment: Alignment(1.0, 1.0),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  CalcButton1(
-                    text: 'AC',
-                    fillColor: 0xff888888,
-                    textColor: 0xFF000000,
-                    //textSize: 25,
-                    textSize: 28,
-                    callback: Dialog,
-                  ),
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: 'C',
-                      fillColor: 0xff888888,
-                      textColor: 0xFF000000,
-                      textSize: 32,
-                      callback: clear,
-                    ),
-                    onSwipeUp: () {
-                      numClick('sin');
-                    },
-                    onSwipeRight: () {
-                      numClick('cos');
-                    },
-                    onSwipeLeft: (){
-                      numClick('tan');
-                    },
-                  ),
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: '%',
-                      fillColor: 0xff888888,
-                      textColor: 0xFF000000,
-                      textSize: 40,
-                      callback: numClick,
-                    ),
-                    onSwipeLeft: () {
-                      numClick('(');
-                    },
-                    onSwipeRight: () {
-                      numClick(')');
-                    },
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 1,bottom: 1,right: 0,left: 0),
-                    child: SizedBox(
-                      width: 73,
-                      height: 73,
-                      //width: 65,
-                      //height: 65,
-                      child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40),
+
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        CalcButton33(
+                          text: 'AC/C',
+                          fillColor: 0xff424242,
+                          textColor: 0xFFFFFFFF,
+                          textSize: 13,
+                          callback: clear,
+                          longTap: Dialog,
                         ),
-                        onPressed: () {
-                          delete();
-                        },
-                        child: Text('⌫',
-                          style: GoogleFonts.rubik(
-                            textStyle: TextStyle(
-                              fontSize: 60,
-                             // fontSize: 50,
+                        SwipeGestureRecognizer(
+                          onSwipeLeft: () {
+                            numClick('(');
+                          },
+                          onSwipeRight: () {
+                            numClick(')');
+                          },
+                          child: CalcButton3(
+                            text: '( )',
+                            fillColor: 0xff424242,
+                            textColor: 0xFFFFFFFF,
+                            textSize: 35,
+                            callback: blank,
+                          ),
+                        ),
+                        CalcButton3(
+                          text: '',
+                          fillColor: 0xff424242,
+                          textColor: 0xFFFFFFFF,
+                          textSize: 20,
+                          callback: numClick,
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(top: 2,bottom: 2,right: 0,left: 0),
+                          child: SizedBox(
+                            width: 65,
+                            height: 65,
+                            //  width: deviceWidth * 0.18,
+                            //height: deviceHeight * 0.09,
+                            child: FlatButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              onPressed: () {
+                                numClick('sqrt');
+                              },
+                              child: Text('√',
+                                style: GoogleFonts.rubik(
+                                  textStyle: TextStyle(
+                                    fontSize: 40,
+                                  ),
+                                ),
+                              ),
+                              color: Color(0xff424242),
+                              textColor: Color(0xFFFFFFFF),
                             ),
                           ),
                         ),
-                        color: Color(0xff888888),
-                        textColor: Color(0xFF000000),
-                      ),
+                        /*
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CalcButton322(
+                              text:'(',
+                              fillColor: 0xff424242,
+                              textColor: 0xFFFFFFFF,
+                              textSize: 60,
+                              callback: numClick,
+                            ),
+                            SizedBox(width: 5,),
+                            CalcButton32(
+                              text: ')',
+                              fillColor: 0xff424242,
+                              textColor: 0xFFFFFFFF,
+                              textSize: 60,
+                              callback: numClick,
+                            ),
+                          ],
+                        ), */
+
+
+                      ],
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: '7',
-                      textSize: 40,
-                      fillColor: 0xff424242,
-                      textColor: 0xFFFFFFFF,
-                      callback: numClick,
+                    Column(
+                      children: [
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '7',
+                            textSize: 40,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                            text2: '7*6*5*4*3*2*1',
+                            callback2: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '4',
+                            textSize: 40,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                            text2: '4*3*2*1',
+                            callback2: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '1',
+                            textSize: 40,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                            text2: '1',
+                            callback2: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '0',
+                            textSize: 40,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                            text2: '1',
+                            callback2: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+
+                      ],
                     ),
-                    onSwipeLeft: () {
-                      numClick('-');
-                    },
-                    onSwipeRight: () {
-                      numClick('+');
-                    },
-                    onSwipeUp: () {
-                      numClick('*');
-                    },
-                    onSwipeDown: () {
-                      numClick('/');
-                    },
-                  ),
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: '8',
-                      textSize: 40,
-                      fillColor: 0xff424242,
-                      textColor: 0xFFFFFFFF,
-                      callback: numClick,
+
+                    Column(
+                      children: [
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '8',
+                            textSize: 40,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                            text2: '8*7*6*5*4*3*2*1',
+                            callback2: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '5',
+                            textSize: 40,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                            text2: '5*4*3*2*1',
+                            callback2: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '2',
+                            textSize: 40,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                            text2: '2*1',
+                            callback2: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '00',
+                            textSize: 26,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+                      ],
                     ),
-                    onSwipeLeft: () {
-                      numClick('-');
-                    },
-                    onSwipeRight: () {
-                      numClick('+');
-                    },
-                    onSwipeUp: () {
-                      numClick('*');
-                    },
-                    onSwipeDown: () {
-                      numClick('/');
-                    },
-                  ),
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: '9',
-                      textSize: 40,
-                      fillColor: 0xff424242,
-                      textColor: 0xFFFFFFFF,
-                      callback: numClick,
+
+                    Column(
+                      children: [
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '9',
+                            textSize: 40,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                            text2: '9*8*7*6*5*4*3*2*1',
+                            callback2: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '6',
+                            textSize: 40,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                            text2: '6*5*4*3*2*1',
+                            callback2: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '3',
+                            textSize: 40,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                            text2: '3*2*1',
+                            callback2: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '.',
+                            textSize: 40,
+                            fillColor: 0xff888888,
+                            textColor: 0xFFFFFFFF,
+                            callback: numClick,
+                          ),
+                          onSwipeLeft: () {
+                            numClick('-');
+                          },
+                          onSwipeRight: () {
+                            numClick('+');
+                          },
+                          onSwipeUp: () {
+                            numClick('*');
+                          },
+                          onSwipeDown: () {
+                            numClick('/');
+                          },
+                        ),
+                      ],
                     ),
-                    onSwipeLeft: () {
-                      numClick('-');
-                    },
-                    onSwipeRight: () {
-                      numClick('+');
-                    },
-                    onSwipeUp: () {
-                      numClick('*');
-                    },
-                    onSwipeDown: () {
-                      numClick('/');
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: '4',
-                      textSize: 40,
-                      fillColor: 0xff424242,
-                      textColor: 0xFFFFFFFF,
-                      callback: numClick,
+
+                    Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(top: 2,bottom: 2,right: 0,left: 0),
+                          child: SizedBox(
+                            width: 65,
+                            height: 65,
+                            //  width: deviceWidth * 0.18,
+                            //height: deviceHeight * 0.09,
+                            child: FlatButton(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              onPressed: () {
+                                delete();
+                              },
+                              child: Text('⌫',
+                                style: GoogleFonts.rubik(
+                                  textStyle: TextStyle(
+                                    fontSize: 50,
+                                  ),
+                                ),
+                              ),
+                              color: Color(0xff424242),
+                              textColor: Color(0xFFFFFFFF),
+                            ),
+                          ),
+                        ),
+                        SwipeGestureRecognizer(
+                          child: CalcButton3(
+                            text: '%',
+                            fillColor: 0xff424242,
+                            textColor: 0xFFFFFFFF,
+                            textSize: 40,
+                            callback: numClick,
+                          ),
+                          onSwipeUp: () {
+                            numClick('tan');
+                          },
+                          onSwipeRight: () {
+                            numClick('sin');
+                          },
+                          onSwipeLeft: () {
+                            numClick('cos');
+                          },
+                        ),
+                        CalcButton31(
+                          text: '=',
+                          fillColor: 0xFFFF6F00,
+                          textColor: 0xFFFFFFFF,
+                          textSize: 60,
+                          callback: evaluate,
+                        ),
+                      ],
                     ),
-                    onSwipeLeft: () {
-                      numClick('-');
-                    },
-                    onSwipeRight: () {
-                      numClick('+');
-                    },
-                    onSwipeUp: () {
-                      numClick('*');
-                    },
-                    onSwipeDown: () {
-                      numClick('/');
-                    },
-                  ),
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: '5',
-                      textSize: 40,
-                      fillColor: 0xff424242,
-                      textColor: 0xFFFFFFFF,
-                      callback: numClick,
-                    ),
-                    onSwipeLeft: () {
-                      numClick('-');
-                    },
-                    onSwipeRight: () {
-                      numClick('+');
-                    },
-                    onSwipeUp: () {
-                      numClick('*');
-                    },
-                    onSwipeDown: () {
-                      numClick('/');
-                    },
-                  ),
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: '6',
-                      textSize: 40,
-                      fillColor: 0xff424242,
-                      textColor: 0xFFFFFFFF,
-                      callback: numClick,
-                    ),
-                    onSwipeLeft: () {
-                      numClick('-');
-                    },
-                    onSwipeRight: () {
-                      numClick('+');
-                    },
-                    onSwipeUp: () {
-                      numClick('*');
-                    },
-                    onSwipeDown: () {
-                      numClick('/');
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: '1',
-                      textSize: 40,
-                      fillColor: 0xff424242,
-                      textColor: 0xFFFFFFFF,
-                      callback: numClick,
-                    ),
-                    onSwipeLeft: () {
-                      numClick('-');
-                    },
-                    onSwipeRight: () {
-                      numClick('+');
-                    },
-                    onSwipeUp: () {
-                      numClick('*');
-                    },
-                    onSwipeDown: () {
-                      numClick('/');
-                    },
-                  ),
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: '2',
-                      textSize: 40,
-                      fillColor: 0xff424242,
-                      textColor: 0xFFFFFFFF,
-                      callback: numClick,
-                    ),
-                    onSwipeLeft: () {
-                      numClick('-');
-                    },
-                    onSwipeRight: () {
-                      numClick('+');
-                    },
-                    onSwipeUp: () {
-                      numClick('*');
-                    },
-                    onSwipeDown: () {
-                      numClick('/');
-                    },
-                  ),
-                  GestureDetector(
-                    child: SwipeGestureRecognizer(
-                      child: CalcButton(
-                        text: '3',
-                        textSize: 40,
-                        fillColor: 0xff424242,
-                        textColor: 0xFFFFFFFF,
-                        callback: numClick,
-                      ),
-                      onSwipeLeft: () {
-                        numClick('-');
-                      },
-                      onSwipeRight: () {
-                        numClick('+');
-                      },
-                      onSwipeUp: () {
-                        numClick('*');
-                      },
-                      onSwipeDown: () {
-                        numClick('/');
-                      },
-                    ),
-                    onLongPress: () {
-                      print(pow(2,4));
-                      longTap('3');
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: '0',
-                      textSize: 40,
-                      fillColor: 0xff424242,
-                      textColor: 0xFFFFFFFF,
-                      callback: numClick,
-                    ),
-                    onSwipeLeft: () {
-                      numClick('-');
-                    },
-                    onSwipeRight: () {
-                      numClick('+');
-                    },
-                    onSwipeUp: () {
-                      numClick('*');
-                    },
-                    onSwipeDown: () {
-                      numClick('/');
-                    },
-                  ),
-                  CalcButton(
-                    text: '.',
-                    textSize: 40,
-                    fillColor: 0xff424242,
-                    textColor: 0xFFFFFFFF,
-                    callback: numClick,
-                  ),
-                  CalcButton(
-                    text: '=',
-                    textSize: 40,
-                    fillColor: 0xFFFF6F00,
-                    textColor: 0xFFFFFFFF,
-                    callback: evaluate,
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
@@ -1039,6 +1160,10 @@ class CalcAppState extends State<CalcApp> {
       ),
     );
   }
+
+
+
+
 
   Widget Dialog() {
     showDialog(
@@ -1091,11 +1216,9 @@ class CalcAppState extends State<CalcApp> {
         }
     );
   }
-
   void action () {
     Navigator.pop(context);
   }
-
   void flickDelete1() {
     setState(() {
       _history = _history2;

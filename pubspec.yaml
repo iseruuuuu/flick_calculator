@@ -34,6 +34,14 @@ dependencies:
   swipe_up: ^1.0.0
   swipable_stack:
   swipe_gesture_recognizer: ^0.0.2
+  super_tooltip: ^1.0.1
+
+  admob_flutter: ^0.3.4
+
+  flutter_slidable: ^0.6.0
+  holding_gesture: ^1.1.0
+
+
 
 dev_dependencies:
   flutter_test:

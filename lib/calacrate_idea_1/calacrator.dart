@@ -1,45 +1,33 @@
 import 'dart:math';
 
-import 'package:calacrate_flick2_app/calacrate_idea_2/CalacButton3.2.dart';
-import 'package:calacrate_flick2_app/calacrate_idea_2/calacrate.dart';
 import 'package:calacrate_flick2_app/example/swipe_gesture_recognizer.dart';
+import 'package:calacrate_flick2_app/calacrate_idea_1/CalacButton2.dart';
 import 'package:calacrate_flick2_app/explain_page.dart';
 import 'package:flutter/services.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:swipe_gesture_recognizer/swipe_gesture_recognizer.dart';
-import './widgets/CalcButton.dart';
-import 'calacrate_idea_1/calacrator.dart';
-import 'mainnnnn.dart';
 
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  //向き指定
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
-  runApp(MyApp7());
 
-}
 
-class MyApp extends StatelessWidget {
+class MyApp2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CalcApp(),
+      home: CalcApp2(),
     );
   }
 }
 
-class CalcApp extends StatefulWidget {
+class CalcApp2 extends StatefulWidget {
   @override
   CalcAppState createState() => CalcAppState();
 }
 
-class CalcAppState extends State<CalcApp> {
+class CalcAppState extends State<CalcApp2> {
 
   String _history = '';
   String _history2 = '';
@@ -710,84 +698,29 @@ class CalcAppState extends State<CalcApp> {
                 ),
                 alignment: Alignment(1.0, 1.0),
               ),
+
+
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  CalcButton1(
-                    text: 'AC',
-                    fillColor: 0xff888888,
-                    textColor: 0xFF000000,
-                    //textSize: 25,
-                    textSize: 28,
-                    callback: Dialog,
-                  ),
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: 'C',
-                      fillColor: 0xff888888,
-                      textColor: 0xFF000000,
-                      textSize: 32,
-                      callback: clear,
-                    ),
-                    onSwipeUp: () {
-                      numClick('sin');
-                    },
-                    onSwipeRight: () {
-                      numClick('cos');
-                    },
-                    onSwipeLeft: (){
-                      numClick('tan');
-                    },
-                  ),
-                  SwipeGestureRecognizer(
-                    child: CalcButton(
-                      text: '%',
-                      fillColor: 0xff888888,
-                      textColor: 0xFF000000,
-                      textSize: 40,
-                      callback: numClick,
-                    ),
-                    onSwipeLeft: () {
-                      numClick('(');
-                    },
-                    onSwipeRight: () {
-                      numClick(')');
-                    },
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 1,bottom: 1,right: 0,left: 0),
-                    child: SizedBox(
-                      width: 73,
-                      height: 73,
-                      //width: 65,
-                      //height: 65,
-                      child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        onPressed: () {
-                          delete();
-                        },
-                        child: Text('⌫',
-                          style: GoogleFonts.rubik(
-                            textStyle: TextStyle(
-                              fontSize: 60,
-                             // fontSize: 50,
-                            ),
-                          ),
-                        ),
-                        color: Color(0xff888888),
-                        textColor: Color(0xFF000000),
-                      ),
-                    ),
-                  ),
+
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
+
+                  CalcButton2(
+                    text: 'AC',
+                    fillColor: 0xff888888,
+                    textColor: 0xFF000000,
+                    textSize: 25,
+                    callback: allClear,
+                  ),
+
                   SwipeGestureRecognizer(
-                    child: CalcButton(
+                    child: CalcButton2(
                       text: '7',
                       textSize: 40,
                       fillColor: 0xff424242,
@@ -808,7 +741,7 @@ class CalcAppState extends State<CalcApp> {
                     },
                   ),
                   SwipeGestureRecognizer(
-                    child: CalcButton(
+                    child: CalcButton2(
                       text: '8',
                       textSize: 40,
                       fillColor: 0xff424242,
@@ -829,7 +762,7 @@ class CalcAppState extends State<CalcApp> {
                     },
                   ),
                   SwipeGestureRecognizer(
-                    child: CalcButton(
+                    child: CalcButton2(
                       text: '9',
                       textSize: 40,
                       fillColor: 0xff424242,
@@ -849,13 +782,59 @@ class CalcAppState extends State<CalcApp> {
                       numClick('/');
                     },
                   ),
+                  Container(
+                    margin: EdgeInsets.only(top: 2,bottom: 2,right: 0,left: 0),
+                    child: SizedBox(
+                      //   width: 78,
+                      // height: 78,
+                      width: 65,
+                      height: 65,
+                      child: FlatButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        onPressed: () {
+                          delete();
+                        },
+                        child: Text('⌫',
+                          style: GoogleFonts.rubik(
+                            textStyle: TextStyle(
+                              fontSize: 50,
+                            ),
+                          ),
+                        ),
+                        color: Color(0xff888888),
+                        textColor: Color(0xFF000000),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
+
                   SwipeGestureRecognizer(
-                    child: CalcButton(
+                    child: CalcButton2(
+                      text: 'C',
+                      fillColor: 0xff888888,
+                      textColor: 0xFF000000,
+                      textSize: 32,
+                      callback: clear,
+                    ),
+                    onSwipeUp: () {
+                      numClick('sin');
+                    },
+                    onSwipeRight: () {
+                      numClick('cos');
+                    },
+                    onSwipeLeft: (){
+                      numClick('tan');
+                    },
+                  ),
+
+                  SwipeGestureRecognizer(
+                    child: CalcButton2(
                       text: '4',
                       textSize: 40,
                       fillColor: 0xff424242,
@@ -876,7 +855,7 @@ class CalcAppState extends State<CalcApp> {
                     },
                   ),
                   SwipeGestureRecognizer(
-                    child: CalcButton(
+                    child: CalcButton2(
                       text: '5',
                       textSize: 40,
                       fillColor: 0xff424242,
@@ -897,7 +876,7 @@ class CalcAppState extends State<CalcApp> {
                     },
                   ),
                   SwipeGestureRecognizer(
-                    child: CalcButton(
+                    child: CalcButton2(
                       text: '6',
                       textSize: 40,
                       fillColor: 0xff424242,
@@ -917,13 +896,49 @@ class CalcAppState extends State<CalcApp> {
                       numClick('/');
                     },
                   ),
+
+                  SwipeGestureRecognizer(
+                    child: CalcButton2(
+                      text: 'C',
+                      fillColor: 0xff888888,
+                      textColor: 0xFF000000,
+                      textSize: 32,
+                      callback: clear,
+                    ),
+                    onSwipeUp: () {
+                      numClick('sin');
+                    },
+                    onSwipeRight: () {
+                      numClick('cos');
+                    },
+                    onSwipeLeft: (){
+                      numClick('tan');
+                    },
+                  ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
+
                   SwipeGestureRecognizer(
-                    child: CalcButton(
+                    child: CalcButton2(
+                      text: '%',
+                      fillColor: 0xff888888,
+                      textColor: 0xFF000000,
+                      textSize: 40,
+                      callback: numClick,
+                    ),
+                    onSwipeLeft: () {
+                      numClick('(');
+                    },
+                    onSwipeRight: () {
+                      numClick(')');
+                    },
+                  ),
+
+                  SwipeGestureRecognizer(
+                    child: CalcButton2(
                       text: '1',
                       textSize: 40,
                       fillColor: 0xff424242,
@@ -944,7 +959,7 @@ class CalcAppState extends State<CalcApp> {
                     },
                   ),
                   SwipeGestureRecognizer(
-                    child: CalcButton(
+                    child: CalcButton2(
                       text: '2',
                       textSize: 40,
                       fillColor: 0xff424242,
@@ -966,7 +981,7 @@ class CalcAppState extends State<CalcApp> {
                   ),
                   GestureDetector(
                     child: SwipeGestureRecognizer(
-                      child: CalcButton(
+                      child: CalcButton2(
                         text: '3',
                         textSize: 40,
                         fillColor: 0xff424242,
@@ -991,13 +1006,60 @@ class CalcAppState extends State<CalcApp> {
                       longTap('3');
                     },
                   ),
+
+                  SwipeGestureRecognizer(
+                    child: CalcButton2(
+                      text: '%',
+                      fillColor: 0xff888888,
+                      textColor: 0xFF000000,
+                      textSize: 40,
+                      callback: numClick,
+                    ),
+                    onSwipeLeft: () {
+                      numClick('(');
+                    },
+                    onSwipeRight: () {
+                      numClick(')');
+                    },
+                  ),
+
                 ],
               ),
+
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(top: 2,bottom: 2,right: 0,left: 0),
+                    child: SizedBox(
+                      //   width: 78,
+                      // height: 78,
+                      width: 65,
+                      height: 65,
+                      child: FlatButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        onPressed: () {
+                          delete();
+                        },
+                        child: Text('⌫',
+                          style: GoogleFonts.rubik(
+                            textStyle: TextStyle(
+                              fontSize: 50,
+                            ),
+                          ),
+                        ),
+                        color: Color(0xff888888),
+                        textColor: Color(0xFF000000),
+                      ),
+                    ),
+                  ),
+
+
                   SwipeGestureRecognizer(
-                    child: CalcButton(
+                    child: CalcButton2(
                       text: '0',
                       textSize: 40,
                       fillColor: 0xff424242,
@@ -1017,19 +1079,46 @@ class CalcAppState extends State<CalcApp> {
                       numClick('/');
                     },
                   ),
-                  CalcButton(
+                  CalcButton2(
                     text: '.',
                     textSize: 40,
                     fillColor: 0xff424242,
                     textColor: 0xFFFFFFFF,
                     callback: numClick,
                   ),
-                  CalcButton(
+                  CalcButton2(
                     text: '=',
                     textSize: 40,
                     fillColor: 0xFFFF6F00,
                     textColor: 0xFFFFFFFF,
                     callback: evaluate,
+                  ),
+
+                  Container(
+                    margin: EdgeInsets.only(top: 2,bottom: 2,right: 0,left: 0),
+                    child: SizedBox(
+                      //   width: 78,
+                      // height: 78,
+                      width: 65,
+                      height: 65,
+                      child: FlatButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        onPressed: () {
+                          delete();
+                        },
+                        child: Text('⌫',
+                          style: GoogleFonts.rubik(
+                            textStyle: TextStyle(
+                              fontSize: 50,
+                            ),
+                          ),
+                        ),
+                        color: Color(0xff888888),
+                        textColor: Color(0xFF000000),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -1040,61 +1129,8 @@ class CalcAppState extends State<CalcApp> {
     );
   }
 
-  Widget Dialog() {
-    showDialog(
-        context: context,
-        builder: (_) {
-          return AlertDialog(
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(32.0))),
-            title: Text(
-                '確認',
-                textAlign: TextAlign.center),
-            content: Text(
-                '全ての計算を削除されます'
-                ,textAlign: TextAlign.center),
-            actions: [
-              Divider(color: Colors.black,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    child: FlatButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'いいえ',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    width: 1,
-                    child: VerticalDivider(color: Colors.black,),
-                  ),
-                  CalcButton3222(
-                    text: 'はい',
-                    textColor: 0xFF1E88E5,
-                    textSize: 20,
-                    callback: allClear,
-                    callback2: action,
-                  ),
-                ],
-              ),
-            ],
-          );
-        }
-    );
-  }
 
-  void action () {
-    Navigator.pop(context);
-  }
+
 
   void flickDelete1() {
     setState(() {

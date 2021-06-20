@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swipe_gesture_recognizer/swipe_gesture_recognizer.dart';
 
-
 import 'package:flutter/material.dart';
 import 'package:swipe_to/swipe_to.dart';
 
