@@ -18,7 +18,9 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  #sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
+
 
 dependencies:
   flutter:
@@ -27,21 +29,26 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  google_fonts: 1.1.0
-  math_expressions: ^2.0.0
-  swipe_to: ^0.0.1+8
-  swipe_up: ^1.0.0
+  cupertino_icons:
+  math_expressions:
+  swipe_to:
+  swipe_up:
   swipable_stack:
-  swipe_gesture_recognizer: ^0.0.2
-  super_tooltip: ^1.0.1
+  super_tooltip:
+  flutter_slidable:
+  holding_gesture:
 
-  admob_flutter: ^0.3.4
+  #admob_flutter: ^0.3.4
+  #admob_flutter:
+  app_tracking_transparency: ^2.0.1
+  #google_mobile_ads: ^0.12.0
+  google_mobile_ads: ^0.12.0
+  provider: ^6.0.2
 
-  flutter_slidable: ^0.6.0
-  holding_gesture: ^1.1.0
+  admob_flutter: ^2.0.0
+  four_swipe_direction: ^0.0.4
 
-
+  get: ^4.6.1
 
 dev_dependencies:
   flutter_test:
@@ -60,7 +67,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/1.png
+    - assets/11.png
     - assets/2.png
     - assets/3.png
 
