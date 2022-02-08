@@ -34,8 +34,6 @@ class DeleteButton extends StatelessWidget {
                 child: Text(
                   '⌫',
                   style: TextStyle(
-                    //fontSize: 40,
-                    //fontSize: MediaQuery.of(context).size.width / 10,
                     fontSize: MediaQuery.of(context).size.width / 9,
                     // fontSize: 50,
                   ),

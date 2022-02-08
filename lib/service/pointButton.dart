@@ -11,7 +11,7 @@ class PointButton extends StatelessWidget {
 
   final String text;
   final double textSize;
-  final Function callback;
+  final Function() callback;
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,7 @@ class PointButton extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
-                onPressed: () {
-                  callback(text);
-                  HapticFeedback.selectionClick();
-                },
+                onPressed: callback,
                 child: Text(
                   text,
                   style: TextStyle(

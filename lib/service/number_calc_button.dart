@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:four_swipe_direction/four_swipe_direction.dart';
 
 class NumberCalcButton extends StatelessWidget {
@@ -46,7 +45,6 @@ class NumberCalcButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                   ),
                   onPressed: callback,
-                  //HapticFeedback.selectionClick();
                   child: Text(
                     text,
                     style: TextStyle(
