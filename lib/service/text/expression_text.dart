@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ExpressionItem extends StatelessWidget {
-  const ExpressionItem({
+class ExpressionText extends StatelessWidget {
+  const ExpressionText({
     Key? key,
     required this.expression,
   }) : super(key: key);

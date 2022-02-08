@@ -1,6 +1,6 @@
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:calacrate_flick2_app/admob/admob_state.dart';
-import 'package:calacrate_flick2_app/service/dialog_button.dart';
+import 'package:calacrate_flick2_app/service/button/dialog_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -80,13 +80,14 @@ class HomeScreenController extends GetxController {
     switch (button) {
       case 1:
         //数字のボタン
-        HapticFeedback.heavyImpact();
+        HapticFeedback.lightImpact();
         break;
       case 2:
         //１タップした時
-        HapticFeedback.selectionClick();
+        HapticFeedback.lightImpact();
         break;
       case 3:
+        HapticFeedback.lightImpact();
         break;
       default:
         break;
@@ -158,48 +159,50 @@ class HomeScreenController extends GetxController {
   }
 
   void evaluate() {
-    Parser p = Parser();
-    Expression exp = p.parse(expression);
-    ContextModel cm = ContextModel();
-    //TODO 計算の配列をString型に直す。
-    _exp = cal.join('');
+    if (cal.length != 0) {
+      Parser p = Parser();
+      Expression exp = p.parse(expression);
+      ContextModel cm = ContextModel();
+      //TODO 計算の配列をString型に直す。
+      _exp = cal.join('');
 
-    _expp = cal2.join('');
-    //print(_expp);
-    // print(_exp); // 9*9
-    _exp2 = _expp; // 9*9の途中式専用
+      _expp = cal2.join('');
+      //print(_expp);
+      // print(_exp); // 9*9
+      _exp2 = _expp; // 9*9の途中式専用
 
-    // TODO ①(途中式)  ② 途中式  ③計算結果
-    // ①
-    listItem3.add('(' + _exp + ')');
-    // print(listItem3);//[(99*9)]
-    listItem5.add('(' + _expp + ')');
-    // print(listItem5);
-    // ②
-    listItem2.add(_exp);
+      // TODO ①(途中式)  ② 途中式  ③計算結果
+      // ①
+      listItem3.add('(' + _exp + ')');
+      // print(listItem3);//[(99*9)]
+      listItem5.add('(' + _expp + ')');
+      // print(listItem5);
+      // ②
+      listItem2.add(_exp);
 
-    listItem4.add(_expp);
-    // print(listItem2);//[99*9]
-    //   print(listItem4);
-    // ③
-    _exp = exp.evaluate(EvaluationType.REAL, cm).toString();
-    //　途中式　＝　結果
+      listItem4.add(_expp);
+      // print(listItem2);//[99*9]
+      //   print(listItem4);
+      // ③
+      _exp = exp.evaluate(EvaluationType.REAL, cm).toString();
+      //　途中式　＝　結果
 
-    //_exp2　を見かけの計算にする。
-    _exp3 = _exp2 + ' = ' + _exp;
-    //  print(_exp3);//
+      //_exp2　を見かけの計算にする。
+      _exp3 = _exp2 + ' = ' + _exp;
+      //  print(_exp3);//
 
-    listItem.add(_exp3);
-    //print(listItem);// 9/9=1.0
-    expression = '';
-    //_expression2 = '';
-    expression2.value = _exp;
-    _exp = '';
-    _expp = '';
-    _exp2 = '';
-    _exp3 = '';
-    cal.clear();
-    cal2.clear();
+      listItem.add(_exp3);
+      //print(listItem);// 9/9=1.0
+      expression = '';
+      //_expression2 = '';
+      expression2.value = _exp;
+      _exp = '';
+      _expp = '';
+      _exp2 = '';
+      _exp3 = '';
+      cal.clear();
+      cal2.clear();
+    }
   }
 
   void onTapAC() {

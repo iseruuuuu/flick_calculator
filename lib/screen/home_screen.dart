@@ -1,11 +1,12 @@
 import 'package:calacrate_flick2_app/screen/home_screen_controller.dart';
-import 'package:calacrate_flick2_app/service/ac_button.dart';
-import 'package:calacrate_flick2_app/service/delete_button.dart';
-import 'package:calacrate_flick2_app/service/expression_item.dart';
-import 'package:calacrate_flick2_app/service/menu_button.dart';
-import 'package:calacrate_flick2_app/service/number_calc_button.dart';
-import 'package:calacrate_flick2_app/service/other_button.dart';
-import 'package:calacrate_flick2_app/service/pointButton.dart';
+import 'package:calacrate_flick2_app/service/button/ac_button.dart';
+import 'package:calacrate_flick2_app/service/button/delete_button.dart';
+import 'package:calacrate_flick2_app/service/button/equal_button.dart';
+import 'package:calacrate_flick2_app/service/text/expression_text.dart';
+import 'package:calacrate_flick2_app/service/button/menu_button.dart';
+import 'package:calacrate_flick2_app/service/button/number_calc_button.dart';
+import 'package:calacrate_flick2_app/service/button/other_button.dart';
+import 'package:calacrate_flick2_app/service/button/pointButton.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:four_swipe_direction/four_swipe_direction.dart';
@@ -113,7 +114,7 @@ class HomeScreen extends StatelessWidget {
               ),
               Divider(color: Colors.white, height: 20, thickness: 5),
               Obx(() =>
-                  ExpressionItem(expression: controller.expression2.value)),
+                  ExpressionText(expression: controller.expression2.value)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -269,9 +270,8 @@ class HomeScreen extends StatelessWidget {
                     text: '.',
                     callback: () => controller.numClick('.', 2),
                   ),
-                  NumberCalcButton(
+                  EqualButton(
                     text: '=',
-                    textSize: MediaQuery.of(context).size.width / 8,
                     callback: () => controller.evaluate(),
                   ),
                 ],
