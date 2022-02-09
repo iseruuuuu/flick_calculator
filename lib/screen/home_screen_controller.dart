@@ -1,6 +1,5 @@
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:calacrate_flick2_app/admob/admob_state.dart';
-import 'package:calacrate_flick2_app/service/button/dialog_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -137,7 +136,7 @@ class HomeScreenController extends GetxController {
     }
   }
 
-  void allClear(String text) {
+  void allClear() {
     cal.clear();
     cal2.clear();
     expression = cal2.join('');
@@ -205,69 +204,7 @@ class HomeScreenController extends GetxController {
     }
   }
 
-  void onTapAC() {
-    showDialog(
-      context: Get.context!,
-      builder: (_) {
-        return AlertDialog(
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(32.0))),
-          title: Text(
-            '削除確認',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20),
-          ),
-          content: Text(
-            '計算や履歴が削除されます\n' 'よろしいでしょうか？',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 15),
-          ),
-          actions: [
-            Divider(
-              color: Colors.black,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  child: FlatButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: Text(
-                      'いいえ',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 50,
-                  width: 1,
-                  child: VerticalDivider(
-                    color: Colors.black,
-                  ),
-                ),
-                DialogButton(
-                  text: 'はい',
-                  textColor: 0xFF1E88E5,
-                  textSize: 20,
-                  callback: allClear,
-                  callback2: action,
-                ),
-              ],
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   void action() {
     Get.back();
   }
-
-  void blank(String text) {}
 }

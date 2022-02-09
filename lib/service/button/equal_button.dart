@@ -4,12 +4,10 @@ class EqualButton extends StatelessWidget {
   const EqualButton({
     Key? key,
     required this.text,
-    this.textSize = 28,
     required this.callback,
   }) : super(key: key);
 
   final String text;
-  final double textSize;
   final Function() callback;
 
   @override
@@ -34,7 +32,8 @@ class EqualButton extends StatelessWidget {
                 child: Text(
                   text,
                   style: TextStyle(
-                    fontSize: textSize,
+                    fontSize: MediaQuery.of(context).size.width / 10,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 color: Color(0xFFFEA00A),

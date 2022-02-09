@@ -121,7 +121,7 @@ class HomeScreen extends StatelessWidget {
                   ACButton(
                     text: 'AC',
                     textSize: deviceWidth / 12.5,
-                    callback: controller.onTapAC,
+                    callback: () => controller.allClear(),
                   ),
                   OtherButton(
                     text: 'C',
